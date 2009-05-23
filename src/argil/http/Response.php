@@ -2,10 +2,8 @@
 
 namespace argil\http;
 
-class Response implements \argil\http\ResponseInterface
+class Response extends ResponseAbstract
 {
-    public function __toString() {
-        return $this->body;
-    }
+
 }
 
