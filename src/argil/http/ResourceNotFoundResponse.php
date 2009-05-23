@@ -2,7 +2,7 @@
 
 namespace argil\http;
 
-class ResourceNotFoundResponse
+class ResourceNotFoundResponse implements \argil\http\ResponseInterface
 {
 
 }
