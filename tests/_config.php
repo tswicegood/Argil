@@ -8,6 +8,9 @@ if (file_exists(__DIR__ . '/../src')) {
 }
 
 function test_autoloader($class_name) {
+    if ($class_name[0] == '\\') {
+        $class_name = substr($class_name, 1);
+    }
     @include str_replace('\\', DIRECTORY_SEPARATOR, $class_name) . '.php';
 }
 
