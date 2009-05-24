@@ -4,8 +4,11 @@ namespace argil\routes;
 
 class ArrayRouter
 {
-    public function getCallable() {
-        return function() { };
+    public function getCallable($route) {
+        if ($route == 'GET /') {
+            return function() { };
+        }
+        return false;
     }
 }
 
