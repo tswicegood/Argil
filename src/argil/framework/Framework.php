@@ -10,11 +10,7 @@ class Framework
         $this->_config = is_null($config) ? new Config() : $config;
     }
 
-    public function run($routes = null) {
-        if (is_null($routes)) {
-            return new \argil\http\ResourceNotFoundResponse;
-        }
-
+    public function run($routes = array()) {
         foreach ($routes as $route => $callback) {
             list($request_method, $regexp) = explode(' ', $route, 2);
             if ($request_method != $this->_config->request_method) {
@@ -30,6 +26,8 @@ class Framework
             $response->body = $raw_response['body'];
             return $response;
         }
+
+        return new \argil\http\ResourceNotFoundResponse;
     }
 }
 
