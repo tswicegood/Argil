@@ -7,9 +7,11 @@ require __DIR__ . '/_config.php';
 
 $post_config = new argil\framework\Config(array(
     'REQUEST_METHOD' => 'POST',
+    'REQUEST_URI' => '/foobar',
 ));
 $get_config = new argil\framework\Config(array(
     'REQUEST_METHOD' => 'GET',
+    'REQUEST_URI' => '/foobar',
 ));
 
 $get_output = 'GET callback called: ' . rand(100, 200);

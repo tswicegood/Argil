@@ -16,10 +16,15 @@ class Framework
         }
 
         foreach ($routes as $route => $callback) {
-            list($request_method,) = explode(' ', $route, 2);
+            list($request_method, $regexp) = explode(' ', $route, 2);
             if ($request_method != $this->_config->request_method) {
                 continue;
             }
+
+            if ($regexp != $this->_config->request_uri) {
+                continue;
+            }
+
             $response = new \argil\http\Response;
             $raw_response = $callback();
             $response->body = $raw_response['body'];
