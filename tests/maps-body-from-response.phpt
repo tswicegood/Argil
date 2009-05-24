@@ -6,11 +6,10 @@ returned attribute.
 
 require_once __DIR__ . '/_config.php';
 
-$config = new argil\framework\Config();
-$config->server = array(
+$config = new argil\framework\Config(array(
     'REQUEST_METHOD' => 'GET',
     'REQUEST_URI' => '/some/endpoint',
-);
+));
 
 $expected_body = 'Hello World! -- ' . rand(100, 200);
 

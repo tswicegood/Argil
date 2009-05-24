@@ -4,15 +4,27 @@ namespace argil\framework;
 
 class Framework
 {
-    public static function run($routes = null) {
+    private $_config = null;
+
+    public function __construct($config = null) {
+        $this->_config = is_null($config) ? new Config() : $config;
+    }
+
+    public function run($routes = null) {
         if (is_null($routes)) {
             return new \argil\http\ResourceNotFoundResponse;
         }
-        $response = new \argil\http\Response;
-        $callback_func = array_shift($routes);
-        $raw_response = $callback_func();
-        $response->body = $raw_response['body'];
-        return $response;
+
+        foreach ($routes as $route => $callback) {
+            list($request_method,) = explode(' ', $route, 2);
+            if ($request_method != $this->_config->request_method) {
+                continue;
+            }
+            $response = new \argil\http\Response;
+            $raw_response = $callback();
+            $response->body = $raw_response['body'];
+            return $response;
+        }
     }
 }
 
