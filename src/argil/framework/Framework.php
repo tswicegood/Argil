@@ -11,23 +11,21 @@ class Framework
     }
 
     public function run($routes = array()) {
-        foreach ($routes as $route => $callback) {
-            list($request_method, $regexp) = explode(' ', $route, 2);
-            if ($request_method != $this->_config->request_method) {
-                continue;
-            }
+        $routes = new \argil\routes\ArrayRouter($routes);
+        $requested_route = sprintf("%s %s",
+            $this->_config->request_method,
+            $this->_config->request_uri
+        );
 
-            if ($regexp != $this->_config->request_uri) {
-                continue;
-            }
-
-            $response = new \argil\http\Response;
-            $raw_response = $callback();
-            $response->body = $raw_response['body'];
-            return $response;
+        $callback = $routes->getCallable($requested_route);
+        if ($callback === false) {
+            return new \argil\http\ResourceNotFoundResponse;
         }
 
-        return new \argil\http\ResourceNotFoundResponse;
+        $response = new \argil\http\Response;
+        $raw_response = $callback();
+        $response->body = $raw_response['body'];
+        return $response;
     }
 }
 
