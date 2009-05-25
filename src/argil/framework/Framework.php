@@ -11,7 +11,7 @@ class Framework
     }
 
     public function run($routes = array()) {
-        $routes = new \argil\routes\ArrayRouter($routes);
+        $routes = new \argil\routes\ArrayRegExpRouter($routes);
         $requested_route = sprintf("%s %s",
             $this->_config->request_method,
             $this->_config->request_uri
