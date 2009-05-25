@@ -11,10 +11,15 @@ class Config
         $values_to_check = array(
             'REQUEST_URI' => 'request_uri',
             'REQUEST_METHOD' => 'request_method',
+            'default_router' => 'default_router',
         );
 
         foreach ($values_to_check as $key => $instance_key) {
-            $this->$instance_key = isset($config[$key]) ? $config[$key] : $_SERVER[$key];
+            if (isset($config[$key])) {
+                $this->$instance_key = $config[$key];
+            } elseif (isset($_SERVER[$key])) {
+                $this->$instance_key = $_SERVER[$key];
+            }
         }
     }
 }
