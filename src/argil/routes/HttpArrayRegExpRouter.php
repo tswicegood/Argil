@@ -2,7 +2,7 @@
 
 namespace argil\routes;
 
-class ArrayRegExpRouter extends ArrayRouter
+class HttpArrayRegExpRouter extends HttpArrayRouter
 {
     protected function _findMatchingCallback($requested_route, $route) {
         $parent_return = parent::_findMatchingCallback($requested_route, $route);

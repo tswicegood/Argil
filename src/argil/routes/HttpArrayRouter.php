@@ -2,7 +2,7 @@
 
 namespace argil\routes;
 
-class ArrayRouter
+class HttpArrayRouter
 {
     protected $_routes;
 

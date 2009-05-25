@@ -5,7 +5,7 @@ Should return false when a match is not found
 
 require __DIR__ . '/_config.php';
 
-$route = new argil\routes\ArrayRouter(array(
+$route = new argil\routes\HttpArrayRouter(array(
     'GET /' => function() {},
 ));
 

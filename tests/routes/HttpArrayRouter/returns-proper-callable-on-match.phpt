@@ -15,7 +15,7 @@ $good_callback = function() {
 
 $good_route = 'POST /path/to/?id=' . rand(100, 200);
 
-$route = new argil\routes\ArrayRouter(array(
+$route = new argil\routes\HttpArrayRouter(array(
     'GET /' => $bad_callback,
     $good_route => $good_callback,
 ));
