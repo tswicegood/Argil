@@ -5,6 +5,7 @@ namespace argil\framework;
 class Config
 {
     public $request_method = '';
+    public $default_router = '\argil\routes\HttpArrayRegExpRouter';
 
     public function __construct($config = array()) {
         $values_to_check = array(
