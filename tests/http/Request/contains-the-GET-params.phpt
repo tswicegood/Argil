@@ -13,7 +13,7 @@ $request = new \argil\http\Request();
 assert('count($request->GET) == count($_GET)');
 
 foreach ($_GET as $key => $value) {
-    assert('$request->GET[$key] == $value');
+    assert('(string)$request->GET[$key] == $value');
 }
 
 ?>
