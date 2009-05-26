@@ -6,7 +6,7 @@ class Request
 {
     public function __construct() {
         $this->GET = new _DecoratedArrayObject($_GET);
-        $this->POST = $_POST;
+        $this->POST = new _DecoratedArrayObject($_POST);
     }
 }
 
