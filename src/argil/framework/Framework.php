@@ -23,8 +23,10 @@ class Framework
             return new \argil\http\ResourceNotFoundResponse;
         }
 
+        $request = new \argil\http\Request();
+
         $response = new \argil\http\Response;
-        $raw_response = $callback();
+        $raw_response = $callback($request);
         $response->body = $raw_response['body'];
         return $response;
     }
