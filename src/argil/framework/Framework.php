@@ -28,6 +28,9 @@ class Framework
         $response = new \argil\http\Response;
         $raw_response = $callback($request);
         $response->body = $raw_response['body'];
+        if (isset($raw_response['headers'])) {
+            $response->headers = $raw_response['headers'];
+        }
         return $response;
     }
 }
