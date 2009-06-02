@@ -19,6 +19,10 @@ class HttpArrayRouter
         return false;
     }
 
+    public function getRequest() {
+        return new \argil\http\Request();
+    }
+
     protected function _findMatchingCallback($requested_route, $route) {
         return $requested_route == $route;
     }
