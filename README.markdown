@@ -28,5 +28,6 @@ Self explanatory.  Feel free to document away.
 ### Create CachedRouter to speed up route matching
 Routing currently checks all provided routes in order to figure out which
 route callback can respond.  This can be remedied by adding a CachedRouter
-to "cache" the lookup by hashing the "verb uri" against known matches.
+to "cache" the lookup by hashing the "verb uri" against known matches.  Not
+sure how useful this would be, but feel free to implement it.
 
