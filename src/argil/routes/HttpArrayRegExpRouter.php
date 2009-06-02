@@ -9,6 +9,9 @@ class HttpArrayRegExpRouter extends HttpArrayRouter
         foreach ($this->_routes as $route => $callback) {
             if (preg_match("@{$route}@", $requested_route, $matches)) {
                 foreach ($matches as $k => $v) {
+                    if (is_numeric($k)) {
+                        continue;
+                    }
                     $return->$k = $v;
                 }
             }
